@@ -1,0 +1,58 @@
+Canopy
+Copyright 2026 The Canopy Authors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product contains runtime patches for, and logic adapted from, vLLM
+(https://github.com/vllm-project/vllm), licensed under the Apache License,
+Version 2.0:
+  Copyright contributors to the vLLM project
+Files that re-implement parts of vLLM's KV cache and scheduler internals:
+  canopy/engine/vllm_hooks.py (vLLM 0.20)
+  integrations/verl/canopy_verl/vllm_patch/prefix_lock.py (vLLM 0.13)
+  integrations/verl/canopy_verl/vllm_patch/partial_preempt.py (vLLM 0.13)
+  integrations/verl/canopy_verl/bootstrap/sitecustomize.py (vLLM 0.13)
+The test mocks in tests/test_vllm_hooks.py and
+integrations/verl/canopy_verl/tests/test_partial_preempt_patch.py mirror vLLM
+data structures.
+
+The thunder_orig policy in canopy/bench/runner.py re-implements the scheduler
+of ThunderAgent (https://github.com/ThunderAgent-org/ThunderAgent, commit
+7ddc861), licensed under the MIT License:
+  Copyright (c) 2026 Hao Kang
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+integrations/verl/ integrates with verl (https://github.com/volcengine/verl),
+licensed under the Apache License, Version 2.0, at commit
+59f53cc4c92dee9609701bbb10d71238bd9ca86e, whose NOTICE reads:
+  Copyright 2023-2024 Bytedance Ltd. and/or its affiliates
+integrations/verl/patches/README.md describes modifications to the following
+verl files, which carry these copyright notices:
+  verl/experimental/agent_loop/agent_loop.py:
+    Copyright 2024 Bytedance Ltd. and/or its affiliates
+  verl/experimental/agent_loop/tool_agent_loop.py:
+    Copyright 2025 Bytedance Ltd. and/or its affiliates
+  verl/experimental/fully_async_policy/fully_async_rollouter.py,
+  verl/experimental/fully_async_policy/fully_async_trainer.py:
+    Copyright 2025 Meituan Ltd. and/or its affiliates
+  verl/trainer/ppo/ray_trainer.py:
+    Copyright 2024 Bytedance Ltd. and/or its affiliates
+    Copyright 2023-2024 SGLang Team
+    Copyright 2025 ModelBest Inc. and/or its affiliates

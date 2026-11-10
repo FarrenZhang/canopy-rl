@@ -1,0 +1,7790 @@
+[
+  {
+    "exp": "m_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "m_inflight",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "branch_mode": "inflight",
+      "branch_frac": [
+        20,
+        60
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "m_rag_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "m_rag_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "m_rag_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "m_api_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "m_api_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "m_api_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "m_lc",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "n": 8,
+      "prefix": [
+        12000,
+        20000
+      ],
+      "gen": [
+        128,
+        512
+      ],
+      "groups": 192
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "m_swelong_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        10,
+        24
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 48
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "m_swelong_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        10,
+        24
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 48
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "m_swelong_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        10,
+        24
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 48
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "m_math",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "n": 8,
+      "prefix": [
+        100,
+        400
+      ],
+      "gen": {
+        "lognorm": [
+          4000,
+          0.5,
+          1000,
+          8000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "m_swe_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        6,
+        14
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "m_swe_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        6,
+        14
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "m_swe_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        6,
+        14
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,ttl,thunder,rv,canopy",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "fx_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "fx_inflight",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "branch_mode": "inflight",
+      "branch_frac": [
+        20,
+        60
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "fx_rag_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "fx_rag_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "fx_rag_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "fx_api_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "fx_api_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "fx_api_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "fx_lc",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "n": 8,
+      "prefix": [
+        12000,
+        20000
+      ],
+      "gen": [
+        128,
+        512
+      ],
+      "groups": 192
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "fx_swelong_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        10,
+        24
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 48
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "fx_swelong_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        10,
+        24
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 48
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "fx_swelong_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        1500,
+        4000
+      ],
+      "turns": [
+        10,
+        24
+      ],
+      "obs": {
+        "lognorm": [
+          900,
+          0.8,
+          50,
+          3000
+        ]
+      },
+      "gen": {
+        "lognorm": [
+          60,
+          0.8,
+          10,
+          400
+        ]
+      },
+      "tool_ms": {
+        "lognorm": [
+          300,
+          1.0,
+          20,
+          4500
+        ]
+      },
+      "groups": 48
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "fx_math",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "n": 8,
+      "prefix": [
+        100,
+        400
+      ],
+      "gen": {
+        "lognorm": [
+          4000,
+          0.5,
+          1000,
+          8000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,canopy,canopy_full",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "cap_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap8,stickycap16,stickycap24,sticky,rv,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "cap_inflight",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "branch_mode": "inflight",
+      "branch_frac": [
+        20,
+        60
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap8,stickycap16,stickycap24,sticky,rv,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "cap_rag_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap64,stickycap128,stickycap192,sticky,rv,canopy",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "cap_rag_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap64,stickycap128,stickycap192,sticky,rv,canopy",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "cap_rag_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap64,stickycap128,stickycap192,sticky,rv,canopy",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "cap_api_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap32,stickycap64,stickycap96,sticky,rv,canopy",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "cap_api_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap32,stickycap64,stickycap96,sticky,rv,canopy",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "cap_api_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap32,stickycap64,stickycap96,sticky,rv,canopy",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "cap_lc",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "n": 8,
+      "prefix": [
+        12000,
+        20000
+      ],
+      "gen": [
+        128,
+        512
+      ],
+      "groups": 192
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "stickycap48,stickycap96,stickycap128,sticky,rv,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "abr_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "rv,rv_hold,rv_nopin,rv_nopp,rv_noplace,sticky_hint,sticky,vanilla",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "abr_inflight",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "branch_mode": "inflight",
+      "branch_frac": [
+        20,
+        60
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "rv,rv_hold,rv_nopin,rv_nopp,rv_noplace,sticky_hint,sticky,vanilla",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "abr_rag_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "rv,rv_hold,rv_nopin,rv_nopp,rv_noplace,sticky_hint,sticky,vanilla",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "abr_rag_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "rv,rv_hold,rv_nopin,rv_nopp,rv_noplace,sticky_hint,sticky,vanilla",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "abr_rag_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "rv,rv_hold,rv_nopin,rv_nopp,rv_noplace,sticky_hint,sticky,vanilla",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "abr_lc",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "n": 8,
+      "prefix": [
+        12000,
+        20000
+      ],
+      "gen": [
+        128,
+        512
+      ],
+      "groups": 96
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "rv,rv_hold,rv_nopin,rv_nopp,rv_noplace,sticky_hint,sticky,vanilla",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "abe_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy,canopy_noprior,canopy_noshare,canopy_noplace,canopy_nohint,canopy_full,thunder_prior,thunder",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "abe_inflight",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "branch_mode": "inflight",
+      "branch_frac": [
+        20,
+        60
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy,canopy_noprior,canopy_noshare,canopy_noplace,canopy_nohint,canopy_full,thunder_prior,thunder",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "abe_rag_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy,canopy_noprior,canopy_noshare,canopy_noplace,canopy_nohint,canopy_full,thunder_prior,thunder",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "abe_rag_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy,canopy_noprior,canopy_noshare,canopy_noplace,canopy_nohint,canopy_full,thunder_prior,thunder",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "abe_rag_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy,canopy_noprior,canopy_noshare,canopy_noplace,canopy_nohint,canopy_full,thunder_prior,thunder",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "abe_api_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy,canopy_noprior,canopy_noshare,canopy_noplace,canopy_nohint,canopy_full,thunder_prior,thunder",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "abe_api_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy,canopy_noprior,canopy_noshare,canopy_noplace,canopy_nohint,canopy_full,thunder_prior,thunder",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "abe_api_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy,canopy_noprior,canopy_noshare,canopy_noplace,canopy_nohint,canopy_full,thunder_prior,thunder",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "pr_tree_kv50",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "num-gpu-blocks": 15600,
+      "policies": "vanilla,sticky_hint,rv_nopp,rv_nopin,rv,rv_hold,canopy,canopy_full",
+      "repeats": 2
+    }
+  },
+  {
+    "exp": "pr_tree_kv25",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "num-gpu-blocks": 7800,
+      "policies": "vanilla,sticky_hint,rv_nopp,rv_nopin,rv,rv_hold,canopy,canopy_full",
+      "repeats": 2
+    }
+  },
+  {
+    "exp": "pr_inflight_kv50",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "branch_mode": "inflight",
+      "branch_frac": [
+        20,
+        60
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "num-gpu-blocks": 15600,
+      "policies": "vanilla,sticky_hint,rv_nopp,rv_nopin,rv,rv_hold,canopy,canopy_full",
+      "repeats": 2
+    }
+  },
+  {
+    "exp": "pr_inflight_kv25",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "branch_mode": "inflight",
+      "branch_frac": [
+        20,
+        60
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "num-gpu-blocks": 7800,
+      "policies": "vanilla,sticky_hint,rv_nopp,rv_nopin,rv,rv_hold,canopy,canopy_full",
+      "repeats": 2
+    }
+  },
+  {
+    "exp": "pr_rag_kv50",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "num-gpu-blocks": 15600,
+      "policies": "vanilla,sticky_hint,rv_nopp,rv_nopin,rv,rv_hold,canopy,canopy_full",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "pr_rag_kv25",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "num-gpu-blocks": 7800,
+      "policies": "vanilla,sticky_hint,rv_nopp,rv_nopin,rv,rv_hold,canopy,canopy_full",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_repl_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 8
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_repl_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 2,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_repl_r4",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_repl_r8",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_repl_r16",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 16,
+    "multinode": true,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1,
+      "multinode": true,
+      "replicas": 16
+    }
+  },
+  {
+    "exp": "sc_repl_r32",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 32,
+    "multinode": true,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1,
+      "multinode": true,
+      "replicas": 32
+    }
+  },
+  {
+    "exp": "sc_group_n1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 1024,
+      "n": 1,
+      "prefix": [
+        8000,
+        12000
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_group_n2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 512,
+      "n": 2,
+      "prefix": [
+        8000,
+        12000
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_group_n4",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 256,
+      "n": 4,
+      "prefix": [
+        8000,
+        12000
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_group_n8",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 128,
+      "n": 8,
+      "prefix": [
+        8000,
+        12000
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_group_n16",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 64,
+      "n": 16,
+      "prefix": [
+        8000,
+        12000
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_group_n32",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 32,
+      "n": 32,
+      "prefix": [
+        8000,
+        12000
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_group_n64",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 16,
+      "n": 64,
+      "prefix": [
+        8000,
+        12000
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_group_n128",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 8,
+      "n": 128,
+      "prefix": [
+        8000,
+        12000
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_share_p1000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 96,
+      "n": 8,
+      "prefix": [
+        800,
+        1200
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_share_p2000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 96,
+      "n": 8,
+      "prefix": [
+        1600,
+        2400
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_share_p4000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 96,
+      "n": 8,
+      "prefix": [
+        3200,
+        4800
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_share_p8000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 96,
+      "n": 8,
+      "prefix": [
+        6400,
+        9600
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_share_p16000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 96,
+      "n": 8,
+      "prefix": [
+        12800,
+        19200
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_share_p32000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "groups": 96,
+      "n": 8,
+      "prefix": [
+        25600,
+        38400
+      ],
+      "gen": [
+        128,
+        512
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_conc_c16",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 2
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_conc_c32",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 4
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_conc_c64",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 8
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_conc_c96",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_conc_c128",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_conc_c192",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_conc_c256",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_tool_t100",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          100,
+          1.0,
+          10,
+          1500
+        ]
+      },
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_tool_t1000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          1000,
+          1.0,
+          66,
+          15000
+        ]
+      },
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_tool_t4000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          4000,
+          1.0,
+          266,
+          60000
+        ]
+      },
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_tool_t12000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          12000,
+          1.0,
+          800,
+          180000
+        ]
+      },
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "sc_tool_t30000",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 1,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          30000,
+          1.0,
+          2000,
+          450000
+        ]
+      },
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,ttl,thunder,stickycap32,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "rb_prior_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy_ps025,canopy_ps05,canopy,canopy_ps2,canopy_ps4,canopy_peak,canopy_noprior",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "rb_prior_rag",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "canopy_ps025,canopy_ps05,canopy,canopy_ps2,canopy_ps4,canopy_peak,canopy_noprior",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "rb_lam_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "thunder_l08,thunder_l09,thunder,thunder_l12,canopy_l08,canopy_l09,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "rb_lam_rag",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "thunder_l08,thunder_l09,thunder,thunder_l12,canopy_l08,canopy_l09,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "ga_tree_mean",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "gen-acct": "mean",
+      "policies": "vanilla,thunder,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "ga_tree_max",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "gen-acct": "max",
+      "policies": "vanilla,thunder,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "ga_rag_mean",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "gen-acct": "mean",
+      "policies": "vanilla,thunder,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "ga_rag_max",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "gen-acct": "max",
+      "policies": "vanilla,thunder,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "ga_api_mean",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "gen-acct": "mean",
+      "policies": "vanilla,thunder,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "ga_api_max",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "gen-acct": "max",
+      "policies": "vanilla,thunder,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "gen_q4b_tree",
+    "model": "Qwen/Qwen3-4B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "gen_q4b_rag",
+    "model": "Qwen/Qwen3-4B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "gen_q14b_tree",
+    "model": "Qwen/Qwen3-14B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "gen_q14b_rag",
+    "model": "Qwen/Qwen3-14B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "gen_q32b_tree",
+    "model": "Qwen/Qwen3-32B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 32
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "tp": 2,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "gen_q32b_rag",
+    "model": "Qwen/Qwen3-32B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "tp": 2,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "gen_moe_tree",
+    "model": "Qwen/Qwen3-30B-A3B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "gen_moe_rag",
+    "model": "Qwen/Qwen3-30B-A3B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 5400,
+      "policies": "vanilla,par,sticky,thunder,rv,canopy",
+      "repeats": 1
+    }
+  },
+  {
+    "exp": "tf_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 2700,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "tf_inflight",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 4,
+      "branch_at": 2,
+      "turns": 6,
+      "prefix": [
+        300,
+        600
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "branch_mode": "inflight",
+      "branch_frac": [
+        20,
+        60
+      ],
+      "groups": 64
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 2700,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "tf_rag_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 3600,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "tf_rag_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 3600,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "tf_rag_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        300,
+        600
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        600,
+        1500
+      ],
+      "gen": [
+        100,
+        400
+      ],
+      "tool_ms": [
+        200,
+        1500
+      ],
+      "groups": 256
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 3600,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "tf_api_r0",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 3600,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 1,
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "tf_api_r1",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 3600,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 1,
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "tf_api_r2",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "multiturn",
+      "n": 8,
+      "prefix": [
+        800,
+        1500
+      ],
+      "turns": [
+        3,
+        8
+      ],
+      "obs": [
+        1000,
+        4000
+      ],
+      "gen": [
+        100,
+        600
+      ],
+      "tool_ms": {
+        "lognorm": [
+          8000,
+          0.7,
+          1000,
+          35000
+        ]
+      },
+      "groups": 128
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 3600,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 1,
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "tf_lc",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "single",
+      "n": 8,
+      "prefix": [
+        12000,
+        20000
+      ],
+      "gen": [
+        128,
+        512
+      ],
+      "groups": 192
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 2700,
+      "policies": "thunder,thunder_orig,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "mx_tree",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "mixed",
+      "parts": [
+        {
+          "kind": "tree",
+          "n": 8,
+          "fanout": 4,
+          "branch_at": 2,
+          "turns": 6,
+          "prefix": [
+            300,
+            600
+          ],
+          "obs": [
+            600,
+            1500
+          ],
+          "gen": [
+            100,
+            400
+          ],
+          "tool_ms": [
+            200,
+            1500
+          ],
+          "groups": 32
+        },
+        {
+          "kind": "tree",
+          "n": 16,
+          "fanout": 4,
+          "branch_at": 2,
+          "turns": 6,
+          "prefix": [
+            300,
+            600
+          ],
+          "obs": [
+            600,
+            1500
+          ],
+          "gen": [
+            100,
+            400
+          ],
+          "tool_ms": [
+            200,
+            1500
+          ],
+          "groups": 24
+        },
+        {
+          "kind": "tree",
+          "n": 32,
+          "fanout": 4,
+          "branch_at": 2,
+          "turns": 6,
+          "prefix": [
+            300,
+            600
+          ],
+          "obs": [
+            600,
+            1500
+          ],
+          "gen": [
+            100,
+            400
+          ],
+          "tool_ms": [
+            200,
+            1500
+          ],
+          "groups": 12
+        }
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 1800,
+      "policies": "vanilla,sticky,stickycap16,thunder,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "mx_inflight",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 8,
+    "multinode": false,
+    "workload": {
+      "kind": "mixed",
+      "parts": [
+        {
+          "kind": "tree",
+          "n": 8,
+          "fanout": 4,
+          "branch_at": 2,
+          "turns": 6,
+          "prefix": [
+            300,
+            600
+          ],
+          "obs": [
+            600,
+            1500
+          ],
+          "gen": [
+            100,
+            400
+          ],
+          "tool_ms": [
+            200,
+            1500
+          ],
+          "branch_mode": "inflight",
+          "branch_frac": [
+            20,
+            60
+          ],
+          "groups": 32
+        },
+        {
+          "kind": "tree",
+          "n": 16,
+          "fanout": 4,
+          "branch_at": 2,
+          "turns": 6,
+          "prefix": [
+            300,
+            600
+          ],
+          "obs": [
+            600,
+            1500
+          ],
+          "gen": [
+            100,
+            400
+          ],
+          "tool_ms": [
+            200,
+            1500
+          ],
+          "branch_mode": "inflight",
+          "branch_frac": [
+            20,
+            60
+          ],
+          "groups": 24
+        },
+        {
+          "kind": "tree",
+          "n": 32,
+          "fanout": 4,
+          "branch_at": 2,
+          "turns": 6,
+          "prefix": [
+            300,
+            600
+          ],
+          "obs": [
+            600,
+            1500
+          ],
+          "gen": [
+            100,
+            400
+          ],
+          "tool_ms": [
+            200,
+            1500
+          ],
+          "branch_mode": "inflight",
+          "branch_frac": [
+            20,
+            60
+          ],
+          "groups": 12
+        }
+      ]
+    },
+    "args": {
+      "max-model-len": 40960,
+      "run-timeout": 1800,
+      "policies": "vanilla,sticky,stickycap16,thunder,canopy",
+      "repeats": 3
+    }
+  },
+  {
+    "exp": "lp_lcC_r0a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcC_r0b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcC_r0c",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "stickycap1,stickycap2,stickycap3",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcC_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcC_r0p",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,par",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcC_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcC_r1a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcC_r1b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcC_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcC_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcC_r2a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "lp_lcC_r2b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 16
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "lp_lcL64_r0a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcL64_r0b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcL64_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL64_r0p",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,par",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL64_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL64_r1a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcL64_r1b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcL64_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL64_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 24
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL128_r0a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcL128_r0b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcL128_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL128_r0p",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,par",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL128_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL128_r1a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcL128_r1b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcL128_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcL128_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        8800,
+        9400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB4_r0a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcB4_r0b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcB4_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB4_r0p",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,par",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB4_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB4_r1a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcB4_r1b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcB4_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB4_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB16_r0a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcB16_r0b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcB16_r0c",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "stickycap1,stickycap2,stickycap3",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB16_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB16_r0p",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,par",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB16_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB16_r1a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcB16_r1b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcB16_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcB16_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 16,
+      "fanout": 16,
+      "branch_at": 11,
+      "turns": [
+        13,
+        13
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        6000,
+        7400
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR75_r0a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcR75_r0b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcR75_r0c",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "stickycap1,stickycap2,stickycap3",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR75_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR75_r0p",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,par",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR75_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR75_r1a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcR75_r1b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcR75_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR75_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 9,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR95_r0a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcR95_r0b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 0
+    }
+  },
+  {
+    "exp": "lp_lcR95_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR95_r0p",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,par",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR95_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR95_r1a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcR95_r1b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 1
+    }
+  },
+  {
+    "exp": "lp_lcR95_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR95_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR95_r2a",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,canopy,canopy_full",
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "lp_lcR95_r2b",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 8,
+      "fanout": 8,
+      "branch_at": 19,
+      "turns": [
+        20,
+        20
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        3900,
+        4700
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 20
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,rv,rv_hold",
+      "rep-start": 2
+    }
+  },
+  {
+    "exp": "lp_lcR50B4_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 6,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR50B4_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 6,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR50B4_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 6,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR50B4_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 6,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR30B4_r0f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 4,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR30B4_r0v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 4,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 0,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR30B4_r1f",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 4,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "canopy_fx,sticky",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  },
+  {
+    "exp": "lp_lcR30B4_r1v",
+    "model": "Qwen/Qwen3-8B",
+    "gpus": 4,
+    "multinode": false,
+    "workload": {
+      "kind": "tree",
+      "n": 4,
+      "fanout": 4,
+      "branch_at": 4,
+      "turns": [
+        12,
+        12
+      ],
+      "prefix": [
+        5500,
+        6500
+      ],
+      "obs": [
+        7000,
+        8000
+      ],
+      "gen": [
+        300,
+        700
+      ],
+      "tool_ms": [
+        2000,
+        6000
+      ],
+      "groups": 12
+    },
+    "args": {
+      "max-model-len": 131072,
+      "run-timeout": 3600,
+      "repeats": 1,
+      "server-extra": "[\"--hf-overrides\", \"{\\\"max_position_embeddings\\\": 131072}\"]",
+      "policies": "sticky,vanilla",
+      "rep-start": 1,
+      "no-warmup": true
+    }
+  }
+]

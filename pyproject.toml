@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "canopy-rl"
+version = "0.1.0"
+description = "Tree-aware rollout scheduling for agent RL: vLLM engine hooks and a rollout-replay benchmark"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [{name = "The Canopy Authors"}]
+requires-python = ">=3.10"
+dependencies = [
+    "aiohttp>=3.8",
+]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+vllm = ["vllm>=0.20,<0.21"]
+orjson = ["orjson>=3.8"]
+ray = ["ray>=2.9"]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+include = ["canopy", "canopy.*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

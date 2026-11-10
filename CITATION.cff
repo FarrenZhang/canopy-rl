@@ -1,0 +1,63 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "Canopy: Tree-Aware Rollout Scheduling for Agent Reinforcement Learning"
+type: software
+license: Apache-2.0
+repository-code: "https://github.com/FarrenZhang/canopy-rl"
+authors:
+  - family-names: Zhang
+    given-names: Feiyuan
+  - family-names: Li
+    given-names: Pengbo
+  - family-names: Li
+    given-names: Ziniu
+  - family-names: Jiang
+    given-names: Yuhao
+  - family-names: Chai
+    given-names: Di
+  - family-names: Tian
+    given-names: Han
+  - family-names: Wang
+    given-names: Junhao
+  - family-names: Wu
+    given-names: Taiqiang
+  - family-names: Huang
+    given-names: Guanhua
+  - family-names: Zeng
+    given-names: Chaoliang
+  - family-names: Liu
+    given-names: Yihao
+  - family-names: Chen
+    given-names: Kai
+preferred-citation:
+  type: conference-paper
+  title: "Canopy: Tree-Aware Rollout Scheduling for Agent Reinforcement Learning"
+  authors:
+    - family-names: Zhang
+      given-names: Feiyuan
+    - family-names: Li
+      given-names: Pengbo
+    - family-names: Li
+      given-names: Ziniu
+    - family-names: Jiang
+      given-names: Yuhao
+    - family-names: Chai
+      given-names: Di
+    - family-names: Tian
+      given-names: Han
+    - family-names: Wang
+      given-names: Junhao
+    - family-names: Wu
+      given-names: Taiqiang
+    - family-names: Huang
+      given-names: Guanhua
+    - family-names: Zeng
+      given-names: Chaoliang
+    - family-names: Liu
+      given-names: Yihao
+    - family-names: Chen
+      given-names: Kai
+  collection-title: "Advances in Neural Information Processing Systems (NeurIPS 2026)"
+  conference:
+    name: "NeurIPS 2026"
+  year: 2026

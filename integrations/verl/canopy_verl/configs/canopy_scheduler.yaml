@@ -1,0 +1,50 @@
+# @package _global_
+# Copyright 2026 The Canopy Authors
+# SPDX-License-Identifier: Apache-2.0
+#
+# Settings read by CanopyAgentLoopManager (canopy_verl.scheduler).  This preset
+# turns on everything: tree-aware placement, shared-prefix retention and
+# prefix-preserving partial preemption (admission mode b2).  Smaller setups:
+#
+#   placement only:          canopy_scheduler.admission.enabled=false
+#   placement + retention:   canopy_scheduler.admission.mode=b1
+#   verl's routing:          canopy_scheduler.placement.enabled=false canopy_scheduler.admission.enabled=false
+#
+# Mode b1 needs CANOPY_BOOTSTRAP_B1=1, and mode b2 also CANOPY_BOOTSTRAP_B2=1, in
+# the environment of every Ray worker (see integrations/verl/README.md).
+
+canopy_scheduler:
+  placement:
+    enabled: true
+    # A request leaves its tree's server only if that server holds more than this
+    # fraction of all in-flight requests and leads the least-loaded server by more
+    # than 10 requests.
+    sticky_threshold: 0.75
+    max_cache_size: 10000          # request-id routing cache, as in verl
+  admission:
+    enabled: true
+    mode: b2                       # a | b1 | b2
+    kv_pressure_threshold: 0.85    # KV usage above which a tick counts as pressure
+    # Shared-prefix retention (b1, b2): lock the blocks of each tree's latest
+    # in-flight request(s).
+    prefix_lock_ttl_sec: 60.0
+    prefix_lock_refresh_sec: 15.0
+    prefix_lock_top_k: 1
+    # Prefix-preserving partial preemption (b2): tag the latest in-flight requests
+    # of each tree once KV usage stays above the threshold.
+    partial_preempt_keep_n_blocks: 8
+    partial_preempt_ttl_sec: 60.0
+    partial_preempt_refresh_sec: 5.0
+    partial_preempt_top_k: 3
+    partial_preempt_pressure_threshold: 0.80
+    partial_preempt_pressure_consecutive: 2
+    partial_preempt_safety_margin_blocks: 1
+    # Pressure monitor (tier a): dummy requests and release decisions are
+    # observed only; abort_mode "all_on_cascade" would abort requests.
+    abort_mode: observe
+    abort_low_value: true
+    keepalive_interval_sec: 30
+    keepalive_max_tokens: 1
+    cascade_threshold: 3
+    cascade_consecutive: 3
+    top_k_abort: 3

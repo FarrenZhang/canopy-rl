@@ -1,0 +1,37 @@
+# Copyright 2026 The Canopy Authors
+# SPDX-License-Identifier: Apache-2.0
+#
+# verl's PPO trainer with the Canopy scheduler.  Run from the root of the verl
+# checkout (the search path below is relative to it), for example:
+#
+#   python3 -m verl.trainer.main_ppo \
+#       --config-path=<canopy>/integrations/verl/canopy_verl/configs \
+#       --config-name=canopy_ppo_trainer \
+#       actor_rollout_ref.model.path=Qwen/Qwen3-8B \
+#       actor_rollout_ref.rollout.agent.default_agent_loop=<your agent loop> ...
+#
+# The agent loop must pass a tree_uid with its generate calls (see
+# integrations/verl/README.md).  Everything not set here comes from verl's
+# ppo_trainer.yaml.
+
+hydra:
+  searchpath:
+    - file://verl/trainer/config
+
+defaults:
+  - ppo_trainer
+  - canopy_scheduler
+  - _self_
+
+actor_rollout_ref:
+  rollout:
+    name: vllm
+    # The admission coordinator reads KV usage from vLLM's /metrics endpoint;
+    # verl accepts prometheus.enable only together with disable_log_stats=false.
+    prometheus:
+      enable: true
+    disable_log_stats: false
+    multi_turn:
+      enable: true
+    agent:
+      agent_loop_manager_class: canopy_verl.scheduler.canopy_agent_loop_manager.CanopyAgentLoopManager
